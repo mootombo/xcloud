@@ -1,2 +1,4 @@
-# xcloud
-private cloud based on owncloud/nextcloud
+# xCloud
+MOOTOMBO EnterpriseOS - cloud unit
+
+xCloud mostly based on owncloud/nextcloud
