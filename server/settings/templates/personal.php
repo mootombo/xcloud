@@ -113,7 +113,7 @@ if($_['displayNameChangeSupported']) {
 </div>
 
 <?php
-if($_['passwordChangeSupported']) {
+if($_['passwordChangeSupported'] && $_['passwordChangeAlternateLink'] === '') {
 	script('jquery-showpassword');
 ?>
 <form id="passwordform" class="section">
@@ -136,9 +136,25 @@ if($_['passwordChangeSupported']) {
 	<div class="strengthify-wrapper"></div>
 </form>
 <?php
+} elseif($_['passwordChangeAlternateLink'] !== '') {
+?>
+<div id="passwordform" class="section">
+	<h2 class="inlineblock"><?php p($l->t('Password'));?></h2>
+	<div>
+		<?php p($l->t('Your account is maintained by an other application.'));?>
+		<a href="<?php echo $_['passwordChangeAlternateLink']; ?>"
+			target="_blank" rel="noreferrer">
+			<em><?php p($l->t('Please click on this link and follow instructions!'));?></em>
+		</a>
+	</div>
+</div>
+<?php
 }
 ?>
 
+<?php
+if($_['languageChangeSupported']) {
+?>
 <form id="language" class="section">
 	<h2>
 		<label for="languageinput"><?php p($l->t('Language'));?></label>
@@ -160,12 +176,15 @@ if($_['passwordChangeSupported']) {
 		<?php endforeach;?>
 	</select>
 	<?php if (OC_Util::getEditionString() === ''): ?>
-	<a href="https://www.transifex.com/projects/p/owncloud/"
+	<a href="https://www.transifex.com/mootombo/xcloud"
 		target="_blank" rel="noreferrer">
 		<em><?php p($l->t('Help translate'));?></em>
 	</a>
 	<?php endif; ?>
 </form>
+<?php
+}
+?>
 
 <div id="sessions" class="section">
 	<h2><?php p($l->t('Sessions'));?></h2>
