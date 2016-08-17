@@ -29,6 +29,6 @@ OCP\App::addNavigationEntry(array(
 	'order' => 10,
 	'href' => OCP\Util::linkToRoute('rainloop_index'),
 	'icon' => OCP\Util::imagePath('rainloop', 'mail.png'),
-	'name' => 'Email'
+	'name' => 'eMail'
 ));
 
