@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<info>
+	<id>delete_confirmation</id>
+	<name>Delete Confirmation</name>
+	<description>Adds confirmation when a file or folder is selected for deletion.</description>
+	<licence>AGPL</licence>
+	<author>Bryan Clay</author>
+	<version>2.0.1</version>
+	<requiremin>8</requiremin>
+	<requiremax>9</requiremax>
+	<dependencies>
+		<owncloud min-version="8.0" max-version="9.0" />
+	</dependencies>
+</info>
