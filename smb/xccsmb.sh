@@ -27,6 +27,9 @@ apt-get install -y samba-common samba tdb-tools
 # Copy the xcloud smb.conf version
 cp $SCRIPTDIR/smb.conf /etc/samba
 
+# Restart the smbd service
+service smbd restart
+
 echo "Shares are accessable with the following credentials"
 echo "Scanboxes (Mostly used for scanners): \\<IP-address>\scanbox"
 echo "Windows (Mostly used for shared windows apps): \\<IP-address>\windows"
