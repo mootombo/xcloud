@@ -1,12 +1,6 @@
 #!/bin/bash
 # Vars
-XCPATH='/var/www/html/xc'
-XCDATA='/var/www/data/xc'
-HTUSER='www-data'
-HTGROUP='www-data'
-ROOTUSER='root'
-SUDOUSER='sysmaster'
-SUDOGROUP='sysmaster'
+SCRIPTDIR="$(dirname $0)"
 
 # Create the shares folder for samba shares
 mkdir -p /mnt/shares
@@ -30,7 +24,9 @@ chmod -R 777 /mnt/shares/windows
 # Install samba server and samba commons
 apt-get install -y samba-common samba tdb-tools
 
-# Adding the scanbox user
-echo "add user scanbox (Please type in the name \"Scanbox\" without quotes. Simply hit enter on all other fields"
-/bin/bash -c "echo" | adduser --no-create-home --disabled-login --shell /bin/false scanbox
+# Copy the xcloud smb.conf version
+cp $SCRIPTDIR/smb.conf /etc/samba
 
+echo "Shares are accessable with the following credentials"
+echo "Scanboxes (Mostly used for scanners): \\<IP-address>\scanbox"
+echo "Windows (Mostly used for shared windows apps): \\<IP-address>\windows"
